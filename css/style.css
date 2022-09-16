@@ -1,230 +1,226 @@
 /* Chamada para fonte customizada*/
 @font-face {
-    font-family: KGEverSinceNewYork;
-    src: url("../fonts/KGEverSinceNewYork.ttf");
+  font-family: KGEverSinceNewYork;
+  src: url("../fonts/KGEverSinceNewYork.ttf");
 }
 
-.header{
-    text-align: center;
-    width: 100%;
-    position: inherit;
+.header {
+  text-align: center;
+  width: 100%;
+  position: inherit;
 }
 
-.main{
-    width: 1000px;
-    height: 600px;
-    left: 5%;
-    right: 5%;
-    margin: 0 auto;
-    position: absolute;
+.main {
+  width: 1000px;
+  height: 600px;
+  left: 5%;
+  right: 5%;
+  margin: 0 auto;
+  position: absolute;
 }
 
-.footer{
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    padding-top: 1%;
-    padding-bottom: 1%;
+.footer {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
-.tituloPrincipal{
-    font-family: KGEverSinceNewYork;
-    font-size: 45px;
-    color: blue;
+.tituloPrincipal {
+  font-family: KGEverSinceNewYork;
+  font-size: 45px;
+  color: blue;
 }
 
-a:not(:hover){
-    text-decoration: none;
+a:not(:hover) {
+  text-decoration: none;
 }
 
-.rodape-contato{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.rodape-contato {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-
-#divPrincipal{
-    background-color: rgb(106, 211, 243);
-    width: 100%;
-    height: 100%;
+#divPrincipal {
+  background-color: rgb(106, 211, 243);
+  width: 100%;
+  height: 100%;
 }
 
-.divs{
-    display: flex;
-    position: relative;
+.divs {
+  display: flex;
+  position: relative;
 }
 /* Configurações DIVs lado esquerdo da tela */
 
-#divPainelEsquerdo{
-    width: 30%;
-    height: 100%;
-    float: left;
+#divPainelEsquerdo {
+  width: 30%;
+  height: 100%;
+  float: left;
 }
 
-#divAcertosErros{
-    width: 100%;
-    height: 50%;
-    align-items: center;
-    justify-content: center;
+#divAcertosErros {
+  width: 100%;
+  height: 50%;
+  align-items: center;
+  justify-content: center;
 }
 
-#divAcertos{
-    width: 80%;
-    height: 33%;
-    margin: 0 auto;
+#divAcertos {
+  width: 80%;
+  height: 33%;
+  margin: 0 auto;
 }
 
-#divErros{
-    width: 80%;
-    height: 33%;
-    margin: 0 auto;
+#divErros {
+  width: 80%;
+  height: 33%;
+  margin: 0 auto;
 }
 
-#divCronometro{
-    width: 80%;
-    height: 34%;
-    margin: 0 auto;
-    display: flex   ;
-    align-items: center;
+#divCronometro {
+  width: 80%;
+  height: 34%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 
-
-#divRodadas{
-    width: 100%;
-    height: 50%;
+#divRodadas {
+  width: 100%;
+  height: 50%;
 }
 /*FIM configurações DIVs do lado esquerdo da tela*/
 
-
 /* Configurações DIVs lado direto da tela */
 
-#divPainelDireito{
-    width: 70%;
-    height: 100%;
-    float: right;
+#divPainelDireito {
+  width: 70%;
+  height: 100%;
+  float: right;
 }
 
-#divFatores{
-    width: 100%;
-    height: 50%;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+#divFatores {
+  width: 100%;
+  height: 50%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-#divResultado{
-    width: 100%;
-    height: 30%;
-    align-items: center;
-    justify-content: center;
+#divResultado {
+  width: 100%;
+  height: 30%;
+  align-items: center;
+  justify-content: center;
 }
-#divAcoes{
-    width: 100%;
-    height: 20%;
-    align-items: center;
-    justify-content: center;
+#divAcoes {
+  width: 100%;
+  height: 20%;
+  align-items: center;
+  justify-content: center;
 }
 
 /*FIM configurações DIVs do lado direito da tela*/
 
 /* INICIO Botões*/
-#btnIniciarJogo{
-   margin: 0 auto;
-   color: green;
+.btnIniciarJogo {
+  margin: 0 auto;
+  color: green;
 }
 
-#btnPararJogo{
-    margin: 0 auto;
-    color: blue;
+.btnPararJogo {
+  margin: 0 auto;
+  color: blue;
 }
 
-
-.btnAcoes{
-    height: 80%;
-    width: 40%;
-    font-family: KGEverSinceNewYork;
-    font-size: 300%;
-    font-style: oblique;
+.btnAcoes {
+  height: 80%;
+  width: 40%;
+  font-family: KGEverSinceNewYork;
+  font-size: 300%;
+  font-style: oblique;
 }
 /* FIM Botões*/
 
 /* INICIO inputs*/
 
-#inputOperador{
-    width: 20%;
-    height: 50%;
-    text-align: center;
-    font-size: 700%;
-    border: none;
-    position: relative;
-    background-color: transparent;
+#inputOperador {
+  width: 20%;
+  height: 50%;
+  text-align: center;
+  font-size: 700%;
+  border: none;
+  position: relative;
+  background-color: transparent;
 }
 
-#inputResultado{
-    height: 60%;
-    width: 40%;
-    border-style: double;
+#inputResultado {
+  height: 60%;
+  width: 40%;
+  border-style: double;
 }
 
-.inputFatores{
-    height: 50%;
-    width: 30%;
-    border-style: double;
+.inputFatores {
+  height: 50%;
+  width: 30%;
+  border-style: double;
 }
 
-.inputs{
-    font-family: KGEverSinceNewYork;
-    font-size: 400%;
-    font-style: oblique;
-    text-align: center;
-    color: blue;
+.inputs {
+  font-family: KGEverSinceNewYork;
+  font-size: 400%;
+  font-style: oblique;
+  text-align: center;
+  color: blue;
 }
 
-.inputsAcertosErros{
-    font-family: KGEverSinceNewYork;
-    font-size: 300%;
-    text-align: center;
-    width: 40%;
-    float: right;
-    position: relative;
-    background-color: transparent;
-    border-style: none;
+.inputsAcertosErros {
+  font-family: KGEverSinceNewYork;
+  font-size: 300%;
+  text-align: center;
+  width: 40%;
+  float: right;
+  position: relative;
+  background-color: transparent;
+  border-style: none;
 }
 
-#inputErros{
-    color: red;
+#inputErros {
+  color: red;
 }
 
-#inputAcertos{
-    color: blue;
+#inputAcertos {
+  color: blue;
 }
-#labelCronometro{
-    font-family: KGEverSinceNewYork;
-    font-size: 200% ;
-    font-style: oblique;
-    text-align: center;
-    width: 60%;
-    margin: 0 auto;
-    background-color: blue;
-    color: white;
+#labelCronometro {
+  font-family: KGEverSinceNewYork;
+  font-size: 200%;
+  font-style: oblique;
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+  background-color: blue;
+  color: white;
 }
 
 /*FIM Inputs*/
 
 /*INICIO Labels*/
-.labels{
-    font-family: KGEverSinceNewYork;
-    font-size: 44px;
-    text-align: center;
-    width: 30%;
-    float: left;
-    position: relative;
+.labels {
+  font-family: KGEverSinceNewYork;
+  font-size: 44px;
+  text-align: center;
+  width: 30%;
+  float: left;
+  position: relative;
 }
 
-#labelErros{
-    color: red;
+#labelErros {
+  color: red;
 }
 
-#labelAcertos{
-    color: blue;
+#labelAcertos {
+  color: blue;
 }
 /*FIM Labels*/

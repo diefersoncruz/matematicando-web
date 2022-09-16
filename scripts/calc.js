@@ -1,8 +1,8 @@
-var fator = 0;
+var fatorOld,
+  fator = 0;
 var multiplicador = 0;
-var fatorOld = 0;
-var limiteFatorA = 0;
-var limiteFatorB = 0;
+var limiteFatorA = 10;
+var limiteFatorB = 10;
 var limiteNegativoFatorA = 0;
 var limiteNegativoFatorB = 0;
 var resultadoOperacao = 0;
@@ -11,78 +11,100 @@ var qtdErrosUsuario = 0;
 var qtdMinutos = 0;
 var qtdSegundos = 0;
 var tempoTotalSegundos = 0;
+var operadorMatematico;
+const dadosConfigurados = {
+  operacoesDeAdicao: true,
+  operacoesDeDivisao: true,
+  operacoesDeMultiplicacao: true,
+  operacoesDeSubtracao: true,
+};
 
-function GeradorGameMatematica()
-{
-    var fatorOld = fator;
-    var opcaoValida = false;
-    var operadorMatematico = getRandomInt(1,4);
-    preencherDadosMultiplicadorFatorTela(operadorMatematico)
-/*    // gera um numero randomico de 1 a 4 para representar as operações matemáticas
-    while (opcaoValida == false) {
-        // Divisão
-        if (operadorMatematico == 1 && dadosConfigurados.operacoesDeDivisao)
-        {
-            lblOperacaoMatematica.Text = "/";
-            // gera os fatores a partir do 1 para evitar erro por divisão por zero
-            gerarFatoresOperacaoMatematicaDivisao();
-            // calcula o resultado
-            resultadoOperacao = fator / multiplicador;
-            preencherDadosMultiplicadorFatorTela();
-            opcaoValida = true;
-        }
-        // Multiplicação
-        else if (operadorMatematico == 2 && dadosConfigurados.operacoesDeMultiplicacao)
-        {
-            // gera os fatores para a operação matemática
-            gerarFatoresOperacaoMatematica();
-            lblOperacaoMatematica.Text = "X";
-            // calcula do resultado
-            resultadoOperacao = fator * multiplicador;
-            preencherDadosMultiplicadorFatorTela();
-            opcaoValida = true;
-        }
-        // Adição
-        else if (operadorMatematico == 3 && dadosConfigurados.operacoesDeAdicao)
-        {
-            // gera os fatores para a operação matemática
-            gerarFatoresOperacaoMatematica();
-            lblOperacaoMatematica.Text = "+";
-            // calcula do resultado
-            resultadoOperacao = fator + multiplicador;
-            preencherDadosMultiplicadorFatorTela();
-            break;
-        }
-        // Subtração
-        else if(operadorMatematico == 4 && dadosConfigurados.operacoesDeSubtracao)
-        {
-            // gera os fatores para a operação matemática
-            gerarFatoresOperacaoMatematica();
-            lblOperacaoMatematica.Text = "-";
-            // calcula do resultado
-            resultadoOperacao = fator - multiplicador;
-            preencherDadosMultiplicadorFatorTela();
-            opcaoValida = true;
-        }
-        operadorMatematico = rnd.Next(1, 4);
-    }*/
-    document.getElementById("inputResultado").focus();
+const inputFator1 = document.getElementById("inputFator1");
+const inputFator2 = document.getElementById("inputFator2");
+const inputResultado = document.querySelector("#inputResultado");
+const inputOperador = document.getElementById("inputOperador");
+
+function geradorGameMatematica() {
+  let opcaoValida = false;
+  while (opcaoValida == false) {
+    operadorMatematico = getRandomInt(1, 4);
+    if (operadorMatematico == 1 && dadosConfigurados.operacoesDeDivisao) {
+      gerarFatoresOperacaoMatematica();
+      resultadoOperacao = fator / multiplicador;
+      opcaoValida = true;
+      preencherDadosMultiplicadorFatorTela(operadorMatematico);
+    } else if (
+      operadorMatematico == 2 &&
+      dadosConfigurados.operacoesDeMultiplicacao
+    ) {
+      gerarFatoresOperacaoMatematica();
+      resultadoOperacao = fator * multiplicador;
+      opcaoValida = true;
+      preencherDadosMultiplicadorFatorTela(operadorMatematico);
+    } else if (operadorMatematico == 3 && dadosConfigurados.operacoesDeAdicao) {
+      gerarFatoresOperacaoMatematica();
+      resultadoOperacao = fator + multiplicador;
+      preencherDadosMultiplicadorFatorTela(operadorMatematico);
+    } else if (
+      operadorMatematico == 4 &&
+      dadosConfigurados.operacoesDeSubtracao
+    ) {
+      gerarFatoresOperacaoMatematica();
+      resultadoOperacao = fator - multiplicador;
+      opcaoValida = true;
+      preencherDadosMultiplicadorFatorTela(operadorMatematico);
+    }
+  }
+  inputResultado.focus();
+  inputResultado.value = "";
 }
 
-function preencherDadosMultiplicadorFatorTela(operador){
-    switch (operador){
-        case 1:
-            operador = "X"
-            break;
-        case 2:
-            operador = "/"
-            break;
-        case 3:
-            operador = "+"
-            break;
-        case 4:
-            operador = "-"
-            break;
+function preencherDadosMultiplicadorFatorTela(operador) {
+  switch (operador) {
+    case 1:
+      operador = "X";
+      break;
+    case 2:
+      operador = "/";
+      break;
+    case 3:
+      operador = "+";
+      break;
+    case 4:
+      operador = "-";
+      break;
+  }
+  inputOperador.setAttribute("value", operador);
+}
+
+function gerarFatoresOperacaoMatematica() {
+  if (operadorMatematico === 2) {
+    while (fatorOld == fator) {
+      fator = getRandomInt(limiteNegativoFatorA, limiteFatorA);
+      multiplicador = getRandomInt(limiteNegativoFatorB, limiteFatorB);
+      // valida se o fator é igual a 0
+      if (fator == 0) {
+        fator += 1;
+      }
+      if (multiplicador == 0) {
+        multiplicador += 1;
+      }
+      while (fator % multiplicador != 0) {
+        fator = getRandomInt(limiteNegativoFatorA, limiteFatorA);
+        multiplicador = getRandomInt(limiteNegativoFatorB, limiteFatorB);
+        if (multiplicador == 0 || fator == 0) {
+          fator = 1;
+          multiplicador = 3;
+        }
+      }
     }
-    document.getElementById("inputOperador").setAttribute("value", operador);
+  } else {
+    while (fatorOld == fator) {
+      fator = getRandomInt(limiteNegativoFatorA, limiteFatorA);
+      multiplicador = getRandomInt(limiteNegativoFatorB, limiteFatorB);
+    }
+  }
+  inputFator1.setAttribute("value", fator);
+  inputFator2.setAttribute("value", multiplicador);
+  fatorOld = fator;
 }
