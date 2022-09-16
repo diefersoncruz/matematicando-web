@@ -1,0 +1,14 @@
+@echo off
+ECHO Copiando arquivos para a pasta do Firebase
+
+xcopy C:\workspace\curso_html\ C:\Tools\firebase\matematicando\public /s /y
+
+pause
+
+cd C:\Tools\firebase\matematicando
+
+Echo Publicando site no firebase
+
+firebase deploy
+
+pause
