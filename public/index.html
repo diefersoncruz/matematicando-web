@@ -53,6 +53,7 @@
               class="inputFatores inputs"
               value="0"
               readonly
+              disabled
             />
             <input
               type="text"
@@ -67,17 +68,20 @@
               class="inputFatores inputs"
               value="0"
               readonly
+              disabled
             />
           </div>
           <div id="divResultado" class="divs">
-            <input type="number" id="inputResultado" class="inputs" value="" />
+            <input
+              type="number"
+              id="inputResultado"
+              class="inputs"
+              value=""
+              disabled
+            />
           </div>
           <div id="divAcoes" class="divs">
-            <button
-              id="btnIniciarPararJogo"
-              class="btnAcoes btnIniciarJogo"
-              onclick="iniciarJogo()"
-            >
+            <button id="btnIniciarPararJogo" class="btnAcoes btnIniciarJogo">
               Iniciar Jogo
             </button>
           </div>
@@ -94,28 +98,5 @@
       </div>
     </main>
   </body>
-  <script>
-    document
-      .querySelector("body")
-      .addEventListener("keydown", function (event) {
-        var tecla = event.keyCode;
-        if (tecla == 13) {
-          // tecla ENTER
-          geradorGameMatematica();
-        } else if (tecla == 27) {
-          // tecla ESC
-        } else if (tecla == 37) {
-          // seta pra ESQUERDA
-        } else if (tecla == 38) {
-          // seta pra CIMA
-        } else if (tecla == 39) {
-          // seta pra DIREITA
-        } else if (tecla == 40) {
-          // seta pra BAIXO
-        }
-      });
-  </script>
-  <script type="text/javascript" src="scripts/utils.js"></script>
-  <script type="text/javascript" src="scripts/calc.js"></script>
-  <script type="text/javascript" src="scripts/main.js"></script>
+  <script type="module" src="./scripts/main.js"></script>
 </html>
