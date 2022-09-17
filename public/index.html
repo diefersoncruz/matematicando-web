@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.75" />
     <title>Matematicando</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="shortcut icon" href="imagens/geometry.ico" type="image/x-icon" />
@@ -12,9 +12,9 @@
     <header class="header">
       <h1 class="tituloPrincipal">Matematicando</h1>
     </header>
-    <main class="main">
+    <main class="painel">
       <div id="divPrincipal">
-        <div id="divPainelEsquerdo">
+        <div id="divPainelEsquerdo" class="painel">
           <div id="divAcertosErros">
             <div id="divAcertos">
               <label id="labelAcertos" class="labels">Acertos: </label>
@@ -45,7 +45,7 @@
           </div>
           <div id="divRodadas"></div>
         </div>
-        <div id="divPainelDireito">
+        <div id="divPainelDireito" class="painel">
           <div id="divFatores" class="divs">
             <input
               type="number"
@@ -53,7 +53,6 @@
               class="inputFatores inputs"
               value="0"
               readonly
-              disabled
             />
             <input
               type="text"
@@ -84,9 +83,12 @@
             <button id="btnIniciarPararJogo" class="btnAcoes btnIniciarJogo">
               Iniciar Jogo
             </button>
+            <button id="btnConfiguracoes"></button>
           </div>
         </div>
       </div>
+    </main>
+    <footer>
       <div class="footer">
         <a class="rodape-contato">
           Desenvolvido por Dieferson Cruz | Contatos:
@@ -96,7 +98,7 @@
           dieferson.cruz@outlook.com</a
         >
       </div>
-    </main>
+    </footer>
   </body>
   <script type="module" src="./scripts/main.js"></script>
 </html>
