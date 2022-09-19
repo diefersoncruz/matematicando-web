@@ -3,18 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.75" />
     <title>Matematicando</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/modal.css" />
     <link rel="shortcut icon" href="imagens/geometry.ico" type="image/x-icon" />
   </head>
   <body>
     <header class="header">
       <h1 class="tituloPrincipal">Matematicando</h1>
     </header>
-    <main class="main">
+    <main class="painel">
       <div id="divPrincipal">
-        <div id="divPainelEsquerdo">
+        <div id="divPainelEsquerdo" class="painel">
           <div id="divAcertosErros">
             <div id="divAcertos">
               <label id="labelAcertos" class="labels">Acertos: </label>
@@ -27,7 +28,9 @@
               />
             </div>
             <div id="divErros">
-              <label id="labelErros" class="labels">Erros: </label>
+              <label id="labelErros" class="labels" for="inputErros"
+                >Erros:
+              </label>
               <input
                 type="text"
                 id="inputErros"
@@ -37,7 +40,7 @@
               />
             </div>
             <div id="divCronometro">
-              <label id="labelCronometro" class="labels">
+              <label id="labelCronometro">
                 <span id="minuto">00</span> :
                 <span id="segundo">00</span>
               </label>
@@ -45,7 +48,7 @@
           </div>
           <div id="divRodadas"></div>
         </div>
-        <div id="divPainelDireito">
+        <div id="divPainelDireito" class="painel">
           <div id="divFatores" class="divs">
             <input
               type="number"
@@ -84,9 +87,77 @@
             <button id="btnIniciarPararJogo" class="btnAcoes btnIniciarJogo">
               Iniciar Jogo
             </button>
+            <button
+              id="btnConfiguracoes"
+              onclick="openModal('dv-modal')"
+            ></button>
           </div>
         </div>
       </div>
+      <div id="dv-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1>Configurações</h1>
+          </div>
+
+          <div class="modal-body">
+            <form action="" id="formConfiguracoes">
+              <label for="tempoLimite"> Tempo Limite (segundos):</label>
+              <input type="number" name="tempoLimite" value="60" />
+              <br />
+              <a> (Fator A) Permitir valores entre </a>
+              <input type="number" name="limiteNegativoFatorA" value="0" />
+              <a> e</a>
+              <input type="number" name="limiteFatorA" value="10" />
+              <br />
+              <a> (Fator B) Permitir valores entre </a>
+              <input type="number" name="limiteNegativoFatorB" value="0" />
+              <a> e</a>
+              <input type="number" name="limiteFatorB" value="10" />
+              <br />
+              <br />
+              <fieldset>
+                <legend>Operações matemáticas permitidas</legend>
+                <div>
+                  <input type="checkbox" id="adicao" name="adicao" checked />
+                  <label for="adicao">Adição</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="subtracao"
+                    name="subtracao"
+                    checked
+                  />
+                  <label for="subtracao">Subtração</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="multiplicacao"
+                    name="multiplicacao"
+                    checked
+                  />
+                  <label for="multiplicacao">Multiplicação</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="divisao" name="divisao" checked />
+                  <label for="divisao">Divisão</label>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btnFechar" onclick="closeModal('dv-modal')">
+              Fechar
+            </button>
+            <button class="btn btnSalvar" id="btnSalvarModal">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
       <div class="footer">
         <a class="rodape-contato">
           Desenvolvido por Dieferson Cruz | Contatos:
@@ -96,7 +167,8 @@
           dieferson.cruz@outlook.com</a
         >
       </div>
-    </main>
+    </footer>
   </body>
   <script type="module" src="./scripts/main.js"></script>
+  <script src="./scripts/modal.js"></script>
 </html>

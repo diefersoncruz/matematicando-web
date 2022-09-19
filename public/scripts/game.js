@@ -1,20 +1,12 @@
 import { getRandomInt } from "./utils.js";
+import { configuracoes } from "../dados/configuracoes.js";
 
-var fatorOld,
-  fator = 0;
-var multiplicador = 0;
-var limiteFatorA = 10;
-var limiteFatorB = 10;
-var limiteNegativoFatorA = 0;
-var limiteNegativoFatorB = 0;
-var resultadoOperacao = undefined;
-var operadorMatematico;
-const dadosConfigurados = {
-  operacoesDeAdicao: true,
-  operacoesDeDivisao: true,
-  operacoesDeMultiplicacao: true,
-  operacoesDeSubtracao: true,
-};
+let fatorOld = 0;
+let fator = 0;
+let resultadoOperacao = undefined;
+let operadorMatematico;
+let multiplicador = 0;
+const dadosConfigurados = configuracoes.operacoesPermitidas;
 
 const inputFator1 = document.getElementById("inputFator1");
 const inputFator2 = document.getElementById("inputFator2");
@@ -29,36 +21,36 @@ function geradorGameMatematica() {
     operadorMatematico = getRandomInt(1, 4);
     if (operadorMatematico == 1 && dadosConfigurados.operacoesDeDivisao) {
       gerarFatoresOperacaoMatematica();
+      preencherFatorTela(operadorMatematico);
       resultadoOperacao = fator / multiplicador;
       opcaoValida = true;
-      preencherDadosMultiplicadorFatorTela(operadorMatematico);
     } else if (
       operadorMatematico == 2 &&
       dadosConfigurados.operacoesDeMultiplicacao
     ) {
       gerarFatoresOperacaoMatematica();
+      preencherFatorTela(operadorMatematico);
       resultadoOperacao = fator * multiplicador;
       opcaoValida = true;
-      preencherDadosMultiplicadorFatorTela(operadorMatematico);
     } else if (operadorMatematico == 3 && dadosConfigurados.operacoesDeAdicao) {
       gerarFatoresOperacaoMatematica();
+      preencherFatorTela(operadorMatematico);
       resultadoOperacao = fator + multiplicador;
-      preencherDadosMultiplicadorFatorTela(operadorMatematico);
+      opcaoValida = true;
     } else if (
       operadorMatematico == 4 &&
       dadosConfigurados.operacoesDeSubtracao
     ) {
       gerarFatoresOperacaoMatematica();
+      preencherFatorTela(operadorMatematico);
       resultadoOperacao = fator - multiplicador;
       opcaoValida = true;
-      preencherDadosMultiplicadorFatorTela(operadorMatematico);
     }
   }
-  inputResultado.focus();
   inputResultado.value = "";
 }
 
-function preencherDadosMultiplicadorFatorTela(operador) {
+function preencherFatorTela(operador) {
   switch (operador) {
     case 1:
       operador = "/";
@@ -79,8 +71,14 @@ function preencherDadosMultiplicadorFatorTela(operador) {
 function gerarFatoresOperacaoMatematica() {
   if (operadorMatematico === 1) {
     while (fatorOld == fator) {
-      fator = getRandomInt(limiteNegativoFatorA, limiteFatorA);
-      multiplicador = getRandomInt(limiteNegativoFatorB, limiteFatorB);
+      fator = getRandomInt(
+        configuracoes.limiteNegativoFatorA,
+        configuracoes.limiteFatorA
+      );
+      multiplicador = getRandomInt(
+        configuracoes.limiteNegativoFatorB,
+        configuracoes.limiteFatorB
+      );
       // valida se o fator é igual a 0
       if (fator == 0) {
         fator = 1;
@@ -89,14 +87,26 @@ function gerarFatoresOperacaoMatematica() {
         multiplicador = 1;
       }
       while (fator % multiplicador !== 0) {
-        fator = getRandomInt(limiteNegativoFatorA, limiteFatorA);
-        multiplicador = getRandomInt(limiteNegativoFatorB, limiteFatorB);
+        fator = getRandomInt(
+          configuracoes.limiteNegativoFatorA,
+          configuracoes.limiteFatorA
+        );
+        multiplicador = getRandomInt(
+          configuracoes.limiteNegativoFatorB,
+          configuracoes.limiteFatorB
+        );
       }
     }
   } else {
     while (fatorOld == fator) {
-      fator = getRandomInt(limiteNegativoFatorA, limiteFatorA);
-      multiplicador = getRandomInt(limiteNegativoFatorB, limiteFatorB);
+      fator = getRandomInt(
+        configuracoes.limiteNegativoFatorA,
+        configuracoes.limiteFatorA
+      );
+      multiplicador = getRandomInt(
+        configuracoes.limiteNegativoFatorB,
+        configuracoes.limiteFatorB
+      );
     }
   }
   inputFator1.setAttribute("value", fator);
