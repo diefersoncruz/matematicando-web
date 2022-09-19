@@ -1,10 +1,18 @@
 import { geradorGameMatematica, zerarAcertosEErros } from "./game.js";
+import { configuracoes } from "../dados/configuracoes.js";
 
 var intervalo;
+let jogoIniciado = false;
 
-function iniciarJogo(segundos) {
+function jogoEmAndamento() {
+  return jogoIniciado;
+}
+
+function iniciarJogo() {
   if (confirm("Pronto para começar?")) {
-    iniciarCronometro(segundos);
+    jogoIniciado = true;
+    document.getElementById("inputResultado").focus();
+    iniciarCronometro();
     geradorGameMatematica();
     inputFator1.removeAttribute("disabled");
     inputFator2.removeAttribute("disabled");
@@ -16,8 +24,13 @@ function iniciarJogo(segundos) {
   }
 }
 
-function pararJogo() {
-  if (confirm("Deseja realmente parar o jogo?")) {
+function pararJogo(confirmarAntesParar = false) {
+  let pararJogo = true;
+  if (confirmarAntesParar) {
+    pararJogo = confirm("Deseja realmente parar o jogo?");
+  }
+  if (pararJogo) {
+    jogoIniciado = false;
     window.clearInterval(intervalo);
     intervalo = undefined;
     document.getElementById("inputResultado").setAttribute("value", "");
@@ -32,7 +45,7 @@ function pararJogo() {
   }
 }
 
-function iniciarCronometro(limiteTempo = 90) {
+function iniciarCronometro() {
   let segundos = 0;
   let minutos = 0;
   let contador = 0;
@@ -50,8 +63,8 @@ function iniciarCronometro(limiteTempo = 90) {
     segundos++;
     contador++;
     preencherMinutosSegundos(segundos, minutos);
-    if (parseInt(contador) == parseInt(limiteTempo)) {
-      pararJogo();
+    if (parseInt(contador) === parseInt(configuracoes.limiteTempo)) {
+      pararJogo(false);
     }
   }, 1000);
 }
@@ -71,4 +84,4 @@ function preencherMinutosSegundos(segundos, minutos) {
   }
 }
 
-export { iniciarJogo, pararJogo };
+export { iniciarJogo, pararJogo, jogoEmAndamento };

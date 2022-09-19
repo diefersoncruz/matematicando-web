@@ -6,34 +6,31 @@
 
 header {
   text-align: center;
-  width: 90%;
+  width: 70vw;
   margin: auto;
 }
 
 main {
   background-color: rgb(106, 211, 243);
-  width: 90%;
+  width: 70vw;
+  height: 60vh;
   margin: auto;
-  left: 5%;
-  right: 5%;
+  border-radius: 20px;
 }
 
 .footer {
-  width: 90%;
+  width: 70vw;
+  height: 10vh;
   margin: auto;
-  min-height: 9%;
   text-align: center;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1vw;
 }
 
 .tituloPrincipal {
   font-family: KGEverSinceNewYork;
-  font-size: 200%;
+  font-size: 3vw;
   color: blue;
-}
-
-.painel {
-  min-height: 220pt;
 }
 
 div {
@@ -42,128 +39,136 @@ div {
 }
 
 #divPainelEsquerdo {
-  width: 30%;
+  width: 20vw;
+  height: 60vh;
   float: left;
 }
 
 #divPainelDireito {
-  width: 70%;
+  width: 50vw;
+  height: 60vh;
   float: right;
 }
 
 #divAcertosErros {
-  min-height: 110pt;
+  width: 20vw;
+  height: 20vh;
 }
 
 #divAcertos {
-  width: 80%;
-  height: 40pt;
-  margin: 0 auto;
+  width: 20vw;
+  height: 7vh;
 }
 
 #divErros {
-  width: 80%;
-  height: 40pt;
-  margin: 0 auto;
+  width: 20vw;
+  height: 7vh;
 }
 
 #divCronometro {
-  width: 80%;
-  height: 30pt;
-  margin: 0 auto;
+  width: 14vw;
+  height: 10vh;
+  margin: auto;
 }
 
 #divRodadas {
-  width: 100%;
-  height: 110pt;
+  width: 20vw;
+  height: 40vh;
 }
 
 #divFatores {
-  width: 100%;
-  height: 110pt;
-  justify-content: center;
-  align-items: flex-start;
+  width: 50vw;
+  height: 30vh;
 }
 
 #divResultado {
-  height: 55pt;
+  width: 50vw;
+  height: 20vh;
 }
 
 #divAcoes {
-  height: 55pt;
+  height: 10vh;
+}
+
+.btnAcoes {
+  width: 15vw;
+  height: 8vh;
+  font-family: KGEverSinceNewYork;
+  font-style: oblique;
+  font-size: 2vw;
+  margin-top: 1vh;
+  margin-left: 20vw;
+  border-radius: 10px;
 }
 
 .btnIniciarJogo {
-  margin: 0 auto;
   color: green;
 }
 
 .btnPararJogo {
-  margin: 0 auto;
   color: blue;
 }
 
-.btnAcoes {
-  margin-left: 30.5%;
-  margin-top: 2.5%;
-  height: 30pt;
-  width: 40%;
-  font-family: KGEverSinceNewYork;
-  font-style: oblique;
-  font-size: 16pt;
-}
-
 #btnConfiguracoes {
-  margin-top: 2.5%;
-  margin-right: 2.5%;
-  width: 30pt;
-  height: 30pt;
+  border-radius: 10px;
+  margin-top: 2vh;
+  margin-right: 2vw;
+  width: 3vw;
+  height: 3vw;
   float: right;
   background-image: url("../imagens/engrenagem.ico");
-  background-size: 30pt;
+  background-size: 3vw;
 }
 
 #inputOperador {
+  border-radius: 10px;
   text-align: center;
   border: none;
-  width: 30%;
+  width: 5vw;
+  height: 10vh;
   background-color: transparent;
 }
 
 #inputResultado {
-  height: 50pt;
-  width: 40%;
-  margin-left: 30%;
+  border-radius: 10px;
+  height: 10vh;
+  width: 30vw;
+  margin-left: 10vw;
+  margin-top: 5vh;
   border-style: double;
 }
 
 .inputFatores {
-  margin-top: 5%;
-  height: 55pt;
-  width: 30%;
+  border-radius: 10px;
+  margin-top: 10vh;
+  margin-left: 2vw;
+  height: 10vh;
+  width: 17vw;
   border-style: double;
 }
 
 #inputErros {
   color: red;
+  margin-top: 0.5vh;
 }
 
 #inputAcertos {
+  margin-top: 0.5vh;
   color: blue;
 }
 
 .inputs {
   font-family: KGEverSinceNewYork;
-  font-size: 25pt;
+  font-size: 5vw;
   font-style: oblique;
   text-align: center;
   color: blue;
 }
 
 .inputsAcertosErros {
-  font-size: larger;
+  font-size: 2vw;
   text-align: center;
-  width: 40%;
+  width: 8vw;
   float: right;
   background-color: transparent;
   border-style: none;
@@ -171,19 +176,23 @@ div {
 
 #labelCronometro {
   font-family: KGEverSinceNewYork;
-  font-size: 14pt;
+  font-size: 3vw;
   font-style: oblique;
   text-align: center;
-  width: 50pt;
-  margin: 0 auto;
   background-color: blue;
   color: white;
+  margin-left: 3vw;
+  border-radius: 10px;
 }
 
 #labelErros {
   color: red;
+  font-size: 2vw;
+  margin-left: 5vw;
 }
 
 #labelAcertos {
+  margin-left: 4vw;
+  font-size: 2vw;
   color: blue;
 }

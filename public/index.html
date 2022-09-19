@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.75" />
     <title>Matematicando</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/modal.css" />
     <link rel="shortcut icon" href="imagens/geometry.ico" type="image/x-icon" />
   </head>
   <body>
@@ -27,7 +28,9 @@
               />
             </div>
             <div id="divErros">
-              <label id="labelErros" class="labels">Erros: </label>
+              <label id="labelErros" class="labels" for="inputErros"
+                >Erros:
+              </label>
               <input
                 type="text"
                 id="inputErros"
@@ -37,7 +40,7 @@
               />
             </div>
             <div id="divCronometro">
-              <label id="labelCronometro" class="labels">
+              <label id="labelCronometro">
                 <span id="minuto">00</span> :
                 <span id="segundo">00</span>
               </label>
@@ -53,6 +56,7 @@
               class="inputFatores inputs"
               value="0"
               readonly
+              disabled
             />
             <input
               type="text"
@@ -83,7 +87,72 @@
             <button id="btnIniciarPararJogo" class="btnAcoes btnIniciarJogo">
               Iniciar Jogo
             </button>
-            <button id="btnConfiguracoes"></button>
+            <button
+              id="btnConfiguracoes"
+              onclick="openModal('dv-modal')"
+            ></button>
+          </div>
+        </div>
+      </div>
+      <div id="dv-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1>Configurações</h1>
+          </div>
+
+          <div class="modal-body">
+            <form action="" id="formConfiguracoes">
+              <label for="tempoLimite"> Tempo Limite (segundos):</label>
+              <input type="number" name="tempoLimite" value="60" />
+              <br />
+              <a> (Fator A) Permitir valores entre </a>
+              <input type="number" name="limiteNegativoFatorA" value="0" />
+              <a> e</a>
+              <input type="number" name="limiteFatorA" value="10" />
+              <br />
+              <a> (Fator B) Permitir valores entre </a>
+              <input type="number" name="limiteNegativoFatorB" value="0" />
+              <a> e</a>
+              <input type="number" name="limiteFatorB" value="10" />
+              <br />
+              <br />
+              <fieldset>
+                <legend>Operações matemáticas permitidas</legend>
+                <div>
+                  <input type="checkbox" id="adicao" name="adicao" checked />
+                  <label for="adicao">Adição</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="subtracao"
+                    name="subtracao"
+                    checked
+                  />
+                  <label for="subtracao">Subtração</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="multiplicacao"
+                    name="multiplicacao"
+                    checked
+                  />
+                  <label for="multiplicacao">Multiplicação</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="divisao" name="divisao" checked />
+                  <label for="divisao">Divisão</label>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btnFechar" onclick="closeModal('dv-modal')">
+              Fechar
+            </button>
+            <button class="btn btnSalvar" id="btnSalvarModal">Salvar</button>
           </div>
         </div>
       </div>
@@ -101,4 +170,5 @@
     </footer>
   </body>
   <script type="module" src="./scripts/main.js"></script>
+  <script src="./scripts/modal.js"></script>
 </html>
