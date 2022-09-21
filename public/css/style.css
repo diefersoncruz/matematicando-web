@@ -113,11 +113,11 @@ div {
   border-radius: 10px;
   margin-top: 2vh;
   margin-right: 2vw;
-  width: 3vw;
-  height: 3vw;
+  width: 5vh;
+  height: 5vh;
   float: right;
   background-image: url("../imagens/engrenagem.ico");
-  background-size: 3vw;
+  background-size: 5vh;
 }
 
 #inputOperador {
