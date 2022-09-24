@@ -1,6 +1,7 @@
 import { configuracoes } from "../dados/configuracoes.js";
 import { iniciarJogo, jogoEmAndamento, pararJogo } from "./controler.js";
 import { validaResultado } from "./game.js";
+import Jogadores from "../service/jogadores.js";
 
 let btnIniciarPararJogo = document.querySelector("#btnIniciarPararJogo");
 let btnSalvarModal = document.querySelector("#btnSalvarModal");
@@ -17,6 +18,7 @@ document.querySelector("body").addEventListener("keydown", function (event) {
 });
 
 btnIniciarPararJogo.addEventListener("click", function () {
+  Jogadores.carregaDadosJogadores();
   if (jogoEmAndamento()) {
     pararJogo(true);
   } else {
