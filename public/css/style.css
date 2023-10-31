@@ -6,20 +6,20 @@
 
 header {
   text-align: center;
-  width: 70vw;
+  width: 80vw;
   margin: auto;
 }
 
 main {
   background-color: rgb(106, 211, 243);
-  width: 70vw;
+  width: 80vw;
   height: 60vh;
   margin: auto;
   border-radius: 20px;
 }
 
 .footer {
-  width: 70vw;
+  width: 80vw;
   height: 10vh;
   margin: auto;
   text-align: center;
@@ -39,7 +39,7 @@ div {
 }
 
 #divPainelEsquerdo {
-  width: 20vw;
+  width: 30vw;
   height: 60vh;
   float: left;
 }
@@ -51,8 +51,8 @@ div {
 }
 
 #divAcertosErros {
-  width: 20vw;
-  height: 20vh;
+  width: 30vw;
+  height: 30vh;
 }
 
 #divAcertos {
@@ -66,19 +66,21 @@ div {
 }
 
 #divCronometro {
-  width: 14vw;
+  width: 20vw;
   height: 10vh;
   margin: auto;
 }
 
 #divRodadas {
   width: 20vw;
-  height: 40vh;
+  height: 30vh;
 }
 
 #divFatores {
   width: 50vw;
   height: 30vh;
+  margin: auto;
+  align-items: center;
 }
 
 #divResultado {
@@ -168,7 +170,7 @@ div {
 .inputsAcertosErros {
   font-size: 2vw;
   text-align: center;
-  width: 8vw;
+  width: 7vw;
   float: right;
   background-color: transparent;
   border-style: none;
@@ -195,4 +197,17 @@ div {
   margin-left: 4vw;
   font-size: 2vw;
   color: blue;
+}
+
+.fieldRodadas {
+  font-family: KGEverSinceNewYork;
+  color: black;
+  font-style: oblique;
+  background-color: lightskyblue;
+  margin: auto;
+  width: 16vw;
+  margin-left: 1vw;
+  height: 25vh;
+  font-size: 2.5vh;
+  text-align: center;
 }
