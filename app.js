@@ -15,6 +15,6 @@ app.get('/', function (req, res) {
 });
 
 // Iniciando o servidor
-var server = app.listen(80, function () {
+var server = app.listen(8080, function () {
     console.log('Servidor rodando na porta 8080');
 });
