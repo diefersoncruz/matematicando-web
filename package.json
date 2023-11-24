@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "main": "node app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nohup node app.js > log.log &"
+  }
+}
