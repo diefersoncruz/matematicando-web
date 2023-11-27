@@ -7,9 +7,9 @@ var fs = require('fs');
 // Configurando o Express para servir arquivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rota para a página inicial
-app.get('/', function (req, res) {
-    fs.readFile(__dirname + '/public/index.html', 'utf8', function (err, text) {
+// Rota para matematicando
+app.get('/matematicando', function (req, res) {
+    fs.readFile(__dirname + '/public/matematicando/index.html', 'utf8', function (err, text) {
         res.send(text);
     });
 });
