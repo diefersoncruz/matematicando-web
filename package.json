@@ -5,6 +5,7 @@
   "main": "node app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "restart": "sudo kill $(sudo lsof -t -i:8000) & nohup node app.js > log.log &",
     "start": "nohup node app.js > log.log &",
     "kill": "sudo kill $(sudo lsof -t -i:8000)"
   }
