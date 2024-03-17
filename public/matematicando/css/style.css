@@ -11,14 +11,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Add some space between elements */
-  padding: 1.5rem 0;
   /* Add some padding to the top and bottom */
   background-color: #f0f0f0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /* Use min-height instead of height to prevent content from overflowing */
   min-height: 10vh;
-  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
 }
 
 main {
@@ -27,51 +26,33 @@ main {
   width: 100%;
   max-width: 100%;
   min-height: 75vh;
-  max-height: 80vh;
-  margin: 0 auto;
   border: 4px solid #333;
-  padding: 20px;
   box-sizing: border-box;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
 .footer {
-  /* Always specify the box-sizing property to avoid unexpected layout issues */
   box-sizing: border-box;
-  /* Use percentage-based width for responsive design */
-  min-width: 100%;
-  /* Use viewport-based height unit for better scaling on different screen sizes */
-  height: 10vh;
+  width: 100%;
+  max-width: 100%;
+  min-height: 10vh;
   /* Center the text both vertically and horizontally in the footer */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-size: 2vw;
+
 }
 
-#divPainelEsquerdo {
-  min-width: 30vw;
-  min-height: 70vh;
-  float: left;
-  box-sizing: border-box;
-  /* Add this property to include padding and border values in the total width of the element */
-  padding: 20px;
-  /* Add some padding to the element for better spacing and readability */
-  border: 1px solid #ccc;
-  /* Add a border to the element to distinguish it from other elements */
-}
-
-#divPainelDireito {
-  min-width: 50vw;
-  min-height: 70vh;
-  float: right;
-  box-sizing: border-box;
-  /* Include padding and border in the element's total width and height */
+.opcoes {
+  margin-top: 1vh;
+  display: flex;
+  justify-content: space-between;
 }
 
 #divAcertos {
-  min-width: 20vw;
-  min-height: 10vh;
+  flex-basis: 30%;
   /* added border to the divErros element */
   border: 1px solid #ccc;
   /* added some padding for better readability */
@@ -81,8 +62,17 @@ main {
 }
 
 #divErros {
-  min-width: 20vw;
-  min-height: 10vh;
+  flex-basis: 30%;
+  /* added border to the divErros element */
+  border: 1px solid #ccc;
+  /* added some padding for better readability */
+  padding: 1rem;
+  /* added some background color to make the box more visible */
+  background-color: #f5f5f5;
+}
+
+#divCronometro {
+  flex-basis: 30%;
   /* added border to the divErros element */
   border: 1px solid #ccc;
   /* added some padding for better readability */
@@ -92,9 +82,8 @@ main {
 }
 
 .inputsAcertosErros {
-  font-size: 4rem;
+  font-size: 2vw;
   text-align: center;
-  width: 7vw;
   float: right;
   background-color: transparent;
   border-style: none;
@@ -102,116 +91,34 @@ main {
 
 #inputErros {
   color: red;
-  margin-top: 0.5vh;
 }
 
 #inputAcertos {
-  margin-top: 0.5vh;
   color: blue;
 }
 
 #labelErros {
   color: red;
-  /* use rem units instead of vw for better accessibility and consistency */
-  font-size: 4rem;
+  font-size: 2vw;
 }
 
 #labelAcertos {
-  /* use rem units instead of vw for better accessibility and consistency */
-  font-size: 15px;
-  /* increase font size to improve readability */
-  color: #0000FF;
-  /* use hexadecimal color code instead of color name for better compatibility */
+  font-size: 2vw;
+  color: blue;
 }
 
 #labelCronometro {
-  font-size: 4rem;
+  font-size: 2vw;
   font-style: oblique;
   text-align: center;
   background-color: blue;
   color: white;
-  min-width: 20vw;
 }
 
 
 #divRodadas {
   min-width: 20vw;
   min-height: 30vh;
-}
-
-#divFatores {
-  width: 50vw;
-  height: 30vh;
-  margin: auto;
-  align-items: center;
-}
-
-#divResultado {
-  width: 50vw;
-  height: 20vh;
-}
-
-#divAcoes {
-  height: 10vh;
-}
-
-.btnAcoes {
-  width: 15vw;
-  height: 8vh;
-  font-family: KGEverSinceNewYork;
-  font-style: oblique;
-  font-size: 2vw;
-  margin-top: 1vh;
-  margin-left: 20vw;
-}
-
-.btnIniciarJogo {
-  color: green;
-}
-
-.btnPararJogo {
-  color: blue;
-}
-
-#btnConfiguracoes {
-  margin-top: 2vh;
-  margin-right: 2vw;
-  width: 5vh;
-  height: 5vh;
-  float: right;
-  background-image: url("../imagens/engrenagem.ico");
-  background-size: 5vh;
-}
-
-#inputOperador {
-  text-align: center;
-  border: none;
-  width: 5vw;
-  height: 10vh;
-  background-color: transparent;
-}
-
-#inputResultado {
-  height: 10vh;
-  width: 30vw;
-  margin-left: 10vw;
-  margin-top: 5vh;
-  border-style: double;
-}
-
-.inputFatores {
-  margin-top: 10vh;
-  margin-left: 2vw;
-  height: 10vh;
-  width: 17vw;
-  border-style: double;
-}
-
-.inputs {
-  font-size: 5vw;
-  font-style: oblique;
-  text-align: center;
-  color: blue;
 }
 
 .fieldRodadas {
@@ -224,4 +131,85 @@ main {
   height: 25vh;
   font-size: 2.5vh;
   text-align: center;
+}
+
+.divFatores {
+  margin-top: 10vh;
+  display: flex;
+  justify-content: space-between;
+  background-color: antiquewhite;
+}
+
+#inputOperador {
+  flex-basis: 40%;
+  background-color: transparent;
+}
+
+.inputFatores {
+  flex-basis: 40%;
+}
+
+.inputs {
+  font-size: 5vw;
+  color: blue;
+}
+
+#divResultado {
+  display: flex;
+  justify-content: space-between;
+  min-height: 20vh;
+  align-items: center;
+}
+
+#inputResultado {
+  flex-basis: 50%;
+  height: 10vh;
+  margin-top: 5vh;
+  border-style: double;
+}
+
+.divBotoes {
+  flex-basis: 20%;
+}
+
+.btnIniciarJogo {
+  color: green;
+  min-width: 10vh;
+  min-height: 10vh;
+  margin-top: 5vh;
+  margin-left: 1vh;
+}
+
+.btnPararJogo {
+  color: blue;
+  min-width: 10vh;
+  min-height: 10vh;
+  margin-top: 5vh;
+  margin-left: 1vh;
+}
+
+#btnConfiguracoes {
+  min-width: 5vh;
+  max-width: 5vh;
+  max-height: 5vh;
+  min-height: 5vh;
+  background-image: url("../imagens/engrenagem.ico");
+  background-size: 5vh;
+  margin-right: 1vh;
+  margin-top: 5vh;
+}
+
+#btn-responder {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 2vw;
+  text-align: center;
+}
+
+#btn-responder:hover {
+  background-color: darkblue;
 }

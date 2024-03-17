@@ -17,42 +17,39 @@
   </header>
   <main class="painel">
     <div id="divPrincipal">
-      <div id="divPainelEsquerdo" class="painel">
-        <label id="labelCronometro">
-          <span id="minuto">00</span> :
-          <span id="segundo">00</span>
-        </label>
+      <div class="opcoes">
         <div id="divAcertos">
           <label id="labelAcertos" class="labels">Acertos: </label>
           <input type="text" id="inputAcertos" class="inputsAcertosErros" value="0" readonly />
         </div>
-        <div id="divErros">
-          <label id="labelErros" class="labels" for="inputErros">Erros:
+        <div class="divCronometro">
+          <label id="labelCronometro">
+            <span id="minuto">00 </span> :
+            <span id="segundo">00 </span>
           </label>
+        </div>
+        <div id="divErros">
+          <label id="labelErros" class="labels" for="inputErros">Erros: </label>
           <input type="text" id="inputErros" class="inputsAcertosErros" value="0" readonly />
         </div>
-        <div id="divRodadas">
-          <fieldset class="fieldRodadas">
-            <legend>Rodadas</legend>
-          </fieldset>
-        </div>
-
       </div>
-      <div id="divPainelDireito" class="painel">
-        <div id="divFatores" class="divs">
-          <input type="number" id="inputFator1" class="inputFatores inputs" value="0" readonly disabled />
-          <input type="text" id="inputOperador" class="inputs" value="X" readonly />
-          <input type="number" id="inputFator2" class="inputFatores inputs" value="0" readonly disabled />
+
+      <div class="divFatores">
+        <input type="number" id="inputFator1" class="inputFatores inputs" value="0" readonly disabled />
+        <input type="text" id="inputOperador" class="inputs" value="X" readonly />
+        <input type="number" id="inputFator2" class="inputFatores inputs" value="0" readonly disabled />
+      </div>
+      <div id="divResultado" class="divs">
+        <div class="botoes">
+          <button id="btnIniciarPararJogo" class="btnAcoes btnIniciarJogo"> Iniciar Jogo </button>
         </div>
-        <div id="divResultado" class="divs">
-          <input type="number" id="inputResultado" class="inputs" value="" disabled />
-        </div>
-        <div id="divAcoes" class="divs">
-          <button id="btnIniciarPararJogo" class="btnAcoes btnIniciarJogo">
-            Iniciar Jogo
-          </button>
+        <input type="number" id="inputResultado" class="inputs" value="" disabled />
+        <div class="botoes">
           <button id="btnConfiguracoes" onclick="openModal('dv-modal')"></button>
         </div>
+      </div>
+      <div class="divResultado" style="text-align: center;">
+        <button id="btn-responder" style="display: inline-block; margin: 0 auto;"> Responder </button>
       </div>
     </div>
     <div id="dv-modal" class="modal">
@@ -110,12 +107,9 @@
   </main>
   <footer>
     <div class="footer">
-      <a class="rodape-contato">
-        Desenvolvido por Dieferson Cruz | Contatos:
-      </a>
+      <a class="rodape-contato"> Desenvolvido por Dieferson Cruz | Contatos: </a>
       <a class="rodape-contato" href="tel:+5541999995491"> (41) 99999-5491</a>
-      <a class="rodape-contato" href="mailto:dieferson.cruz@outlook.com">
-        dieferson.cruz@outlook.com</a>
+      <a class="rodape-contato" href="mailto:dieferson.cruz@outlook.com"> dieferson.cruz@outlook.com</a>
     </div>
   </footer>
 </body>

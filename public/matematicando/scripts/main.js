@@ -6,6 +6,7 @@ import Jogadores from "../service/jogadores.js";
 let btnIniciarPararJogo = document.querySelector("#btnIniciarPararJogo");
 let btnSalvarModal = document.querySelector("#btnSalvarModal");
 let formConfiguracoes = document.querySelector("#formConfiguracoes");
+let btnResponder = document.querySelector("#btn-responder");
 
 document.querySelector("body").addEventListener("keydown", function (event) {
   if (event.key == "Enter") {
@@ -14,6 +15,14 @@ document.querySelector("body").addEventListener("keydown", function (event) {
     } else {
       iniciarJogo();
     }
+  }
+});
+
+btnResponder.addEventListener("click", function () {
+  if (jogoEmAndamento()) {
+    validaResultado();
+  } else {
+    iniciarJogo();
   }
 });
 
