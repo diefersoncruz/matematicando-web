@@ -11,7 +11,9 @@ function jogoEmAndamento() {
 function iniciarJogo() {
   if (confirm("Pronto para começar?")) {
     jogoIniciado = true;
-    document.getElementById("inputResultado").focus();
+    setTimeout(() => {
+      document.getElementById("inputResultado").focus();
+    }, 100);
     iniciarCronometro();
     geradorGameMatematica();
     inputFator1.removeAttribute("disabled");
