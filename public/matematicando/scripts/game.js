@@ -124,12 +124,7 @@ function validaResultado() {
     adicionaQtdErros();
     console.log(configuracoesExibicao.exibirRespostaCerta)
     if (configuracoesExibicao.exibirRespostaCerta) {
-      Swal.fire({
-        title: 'Título personalizado',
-        text: 'Mensagem personalizada',
-        icon: 'success',
-        confirmButtonText: 'o'
-      })
+      window.alert("Resposta correa: " + resultadoOperacao);
     }
     geradorGameMatematica();
   }
