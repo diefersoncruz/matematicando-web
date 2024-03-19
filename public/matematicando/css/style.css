@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+
 body {
   margin: 0;
   /* Eliminates default margin on body */
@@ -26,6 +33,7 @@ main {
   width: 100%;
   max-width: 100%;
   min-height: 75vh;
+  max-height: 85vh;
   border: 4px solid #333;
   box-sizing: border-box;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
@@ -42,7 +50,7 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 1vw;
+  font-size: 1.5dvw;
 }
 
 .opcoes {
@@ -56,12 +64,18 @@ main {
   flex-basis: 20%;
   /* added border to the divErros element */
   border: 1px solid #ccc;
+  background-color: rgb(81, 189, 81);
+  color: white;
+  font-size: 3lvw;
 }
 
 #divErros {
   flex-basis: 20%;
   /* added border to the divErros element */
   border: 1px solid #ccc;
+  background-color: rgb(189, 79, 79);
+  color: white;
+  font-size: 3lvw;
 }
 
 #divCronometro {
@@ -73,35 +87,17 @@ main {
 }
 
 .inputsAcertosErros {
-  font-size: 2vw;
-  float: right;
+  font-size: 3vw;
   background-color: transparent;
   border-style: none;
-}
-
-#inputErros {
-  color: red;
-}
-
-#inputAcertos {
-  color: blue;
-}
-
-#labelErros {
-  color: red;
-  font-size: 2vw;
-}
-
-#labelAcertos {
-  font-size: 2vw;
-  color: blue;
+  color: white;
 }
 
 #labelCronometro {
-  font-size: 3vw;
+  font-size: 5vw;
   font-style: oblique;
   text-align: center;
-  background-color: blue;
+  background-color: rgb(51, 51, 199);
   color: white;
 }
 
@@ -112,7 +108,7 @@ main {
 }
 
 #inputOperador {
-  flex-basis: 40%;
+  flex-basis: 20%;
   background-color: transparent;
   border: none;
 }
@@ -122,7 +118,7 @@ main {
 }
 
 .inputs {
-  font-size: 5vw;
+  font-size: 6vw;
   color: blue;
 }
 
@@ -153,7 +149,7 @@ main {
 }
 
 .btnPararJogo {
-  color: blue;
+  color: rgb(184, 51, 51);
   min-width: 10vh;
   min-height: 10vh;
   margin-top: 5vh;
@@ -172,7 +168,7 @@ main {
 }
 
 #btn-responder {
-  background-color: blue;
+  background-color: rgb(51, 51, 199);
   color: white;
   padding: 10px;
   border-radius: 5px;
