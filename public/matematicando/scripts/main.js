@@ -8,7 +8,7 @@ let btnSalvarModal = document.querySelector("#btnSalvarModal");
 let formConfiguracoes = document.querySelector("#formConfiguracoes");
 let btnResponder = document.querySelector("#btn-responder");
 
-document.querySelector("body").addEventListener("keydown", function (event) {
+function handleEnterEvent(event) {
   if (event.key == "Enter") {
     if (jogoEmAndamento()) {
       validaResultado();
@@ -16,7 +16,9 @@ document.querySelector("body").addEventListener("keydown", function (event) {
       iniciarJogo();
     }
   }
-});
+}
+
+document.querySelector("body").addEventListener("keydown", handleEnterEvent);
 
 btnResponder.addEventListener("click", function () {
   if (jogoEmAndamento()) {
@@ -53,5 +55,7 @@ btnSalvarModal.addEventListener("click", function () {
     formConfiguracoes.multiplicacao.checked;
   configuracoes.operacoesPermitidas.operacoesDeSubtracao =
     formConfiguracoes.subtracao.checked;
+  // configurações de exibição
+  configuracoes.exibicao.exibirRespostaCerta = formConfiguracoes.exibirRespostaCerta.checked;
   closeModal("dv-modal");
 });

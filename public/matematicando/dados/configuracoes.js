@@ -10,4 +10,7 @@ export var configuracoes = {
     operacoesDeMultiplicacao: true,
     operacoesDeSubtracao: true,
   },
+  exibicao: {
+    exibirRespostaCerta: false,
+  }
 };
