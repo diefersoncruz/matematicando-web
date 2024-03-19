@@ -18,6 +18,7 @@ document.querySelector("body").addEventListener("keydown", function (event) {
   }
 });
 
+
 btnResponder.addEventListener("click", function () {
   if (jogoEmAndamento()) {
     validaResultado();
@@ -53,5 +54,7 @@ btnSalvarModal.addEventListener("click", function () {
     formConfiguracoes.multiplicacao.checked;
   configuracoes.operacoesPermitidas.operacoesDeSubtracao =
     formConfiguracoes.subtracao.checked;
+  // configurações de exibição
+  configuracoes.exibicao.exibirRespostaCerta = formConfiguracoes.exibirRespostaCerta.checked;
   closeModal("dv-modal");
 });

@@ -7,6 +7,7 @@ let resultadoOperacao = undefined;
 let operadorMatematico;
 let multiplicador = 0;
 const dadosConfigurados = configuracoes.operacoesPermitidas;
+const configuracoesExibicao = configuracoes.exibicao;
 
 const inputFator1 = document.getElementById("inputFator1");
 const inputFator2 = document.getElementById("inputFator2");
@@ -121,6 +122,15 @@ function validaResultado() {
     geradorGameMatematica();
   } else {
     adicionaQtdErros();
+    console.log(configuracoesExibicao.exibirRespostaCerta)
+    if (configuracoesExibicao.exibirRespostaCerta) {
+      Swal.fire({
+        title: 'Título personalizado',
+        text: 'Mensagem personalizada',
+        icon: 'success',
+        confirmButtonText: 'o'
+      })
+    }
     geradorGameMatematica();
   }
 }
