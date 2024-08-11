@@ -1,61 +1,56 @@
 import { configuracoes } from "../dados/configuracoes.js";
 import { iniciarJogo, jogoEmAndamento, pararJogo } from "./controler.js";
-import { validaResultado } from "./game.js";
+import { validarResultado } from "./game.js";
 import Jogadores from "../service/jogadores.js";
 
-let btnIniciarPararJogo = document.querySelector("#btnIniciarPararJogo");
-let btnSalvarModal = document.querySelector("#btnSalvarModal");
-let formConfiguracoes = document.querySelector("#formConfiguracoes");
-let btnResponder = document.querySelector("#btn-responder");
+const btnIniciarPararJogo = document.getElementById("btnIniciarPararJogo");
+const btnSalvarModal = document.getElementById("btnSalvarModal");
+const formConfiguracoes = document.getElementById("formConfiguracoes");
+const btnResponder = document.getElementById("btn-responder");
 
-function handleEnterEvent(event) {
-  if (event.key == "Enter") {
-    if (jogoEmAndamento()) {
-      validaResultado();
-    } else {
-      iniciarJogo();
-    }
+const handleEnterEvent = (event) => {
+  if (event.key === "Enter") {
+    jogoEmAndamento() ? validarResultado() : iniciarJogo();
+    inputResultado.focus();
   }
-}
+};
 
-document.querySelector("body").addEventListener("keydown", handleEnterEvent);
+const handleBtnResponderClick = () => {
+  jogoEmAndamento() ? validarResultado() : iniciarJogo();
+};
 
-btnResponder.addEventListener("click", function () {
-  if (jogoEmAndamento()) {
-    validaResultado();
-  } else {
-    iniciarJogo();
-  }
-});
-
-btnIniciarPararJogo.addEventListener("click", function () {
+const handleBtnIniciarPararJogoClick = () => {
   Jogadores.carregaDadosJogadores();
-  if (jogoEmAndamento()) {
-    pararJogo(true);
-  } else {
-    iniciarJogo();
-  }
-});
+  jogoEmAndamento() ? pararJogo(true) : iniciarJogo();
+};
 
-btnSalvarModal.addEventListener("click", function () {
-  configuracoes.limiteFatorA = parseInt(formConfiguracoes.limiteFatorA.value);
-  configuracoes.limiteFatorB = parseInt(formConfiguracoes.limiteFatorB.value);
-  configuracoes.limiteNegativoFatorA = parseInt(
-    formConfiguracoes.limiteNegativoFatorA.value
-  );
-  configuracoes.limiteNegativoFatorB = parseInt(
-    formConfiguracoes.limiteNegativoFatorB.value
-  );
-  configuracoes.limiteTempo = parseInt(formConfiguracoes.tempoLimite.value);
-  configuracoes.operacoesPermitidas.operacoesDeAdicao =
-    formConfiguracoes.adicao.checked;
-  configuracoes.operacoesPermitidas.operacoesDeDivisao =
-    formConfiguracoes.divisao.checked;
-  configuracoes.operacoesPermitidas.operacoesDeMultiplicacao =
-    formConfiguracoes.multiplicacao.checked;
-  configuracoes.operacoesPermitidas.operacoesDeSubtracao =
-    formConfiguracoes.subtracao.checked;
-  // configurações de exibição
-  configuracoes.exibicao.exibirRespostaCerta = formConfiguracoes.exibirRespostaCerta.checked;
-  closeModal("dv-modal");
-});
+const handleBtnSalvarModalClick = () => {
+  // Simplificando a atualização das configurações
+  Object.assign(configuracoes, {
+    limiteFatorA: parseInt(formConfiguracoes.limiteFatorA.value),
+    limiteFatorB: parseInt(formConfiguracoes.limiteFatorB.value),
+    limiteNegativoFatorA: parseInt(
+      formConfiguracoes.limiteNegativoFatorA.value
+    ),
+    limiteNegativoFatorB: parseInt(
+      formConfiguracoes.limiteNegativoFatorB.value
+    ),
+    limiteTempo: parseInt(formConfiguracoes.tempoLimite.value),
+    operacoesPermitidas: {
+      operacoesDeAdicao: formConfiguracoes.adicao.checked,
+      operacoesDeDivisao: formConfiguracoes.divisao.checked,
+      operacoesDeMultiplicacao: formConfiguracoes.multiplicacao.checked,
+      operacoesDeSubtracao: formConfiguracoes.subtracao.checked,
+    },
+    exibicao: {
+      exibirRespostaCerta: formConfiguracoes.exibirRespostaCerta.checked,
+    },
+  });
+
+  closeModal("dv-modal"); // Assumindo que 'closeModal' está definida
+};
+
+document.body.addEventListener("keydown", handleEnterEvent);
+btnResponder.addEventListener("click", handleBtnResponderClick);
+btnIniciarPararJogo.addEventListener("click", handleBtnIniciarPararJogoClick);
+btnSalvarModal.addEventListener("click", handleBtnSalvarModalClick);

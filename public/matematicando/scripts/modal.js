@@ -1,17 +1,17 @@
-function openModal(mn) {
-  let modal = document.getElementById(mn);
+const openModal = (modalId) => {
+  const modal = document.getElementById(modalId);
 
-  if (typeof modal == "undefined" || modal === null) return;
+  if (!modal) return;
 
-  modal.style.display = "Block";
+  modal.style.display = "block";
   document.body.style.overflow = "hidden";
-}
+};
 
-function closeModal(mn) {
-  let modal = document.getElementById(mn);
+const closeModal = (modalId) => {
+  const modal = document.getElementById(modalId);
 
-  if (typeof modal == "undefined" || modal === null) return;
+  if (!modal) return;
 
   modal.style.display = "none";
   document.body.style.overflow = "auto";
-}
+};
