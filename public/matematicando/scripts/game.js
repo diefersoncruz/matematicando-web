@@ -150,7 +150,6 @@ function validaResultado() {
   let resultadoUsuario = inputResultado.value;
   let resultadoOperacao = getResultadoOperacao();
 
-  alert(resultadoOperacao);
   if (resultadoOperacao == resultadoUsuario) {
     adicionaQtdAcertos();
     geradorGameMatematica();
