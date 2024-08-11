@@ -1,11 +1,7 @@
 import { getRandomInt } from "./utils.js";
 import { configuracoes } from "../dados/configuracoes.js";
 
-let fatorOld = 0;
-let fator = 0;
-let resultadoOperacao = undefined;
 let operadorMatematico;
-let multiplicador = 0;
 const dadosConfigurados = configuracoes.operacoesPermitidas;
 const configuracoesExibicao = configuracoes.exibicao;
 
@@ -15,6 +11,7 @@ const inputOperador = document.getElementById("inputOperador");
 const inputResultado = document.querySelector("#inputResultado");
 const inputErros = document.querySelector("#inputErros");
 const inputAcertos = document.querySelector("#inputAcertos");
+let historicoOperacoes = [];
 
 function geradorGameMatematica() {
   let opcaoValida = false;
@@ -23,7 +20,6 @@ function geradorGameMatematica() {
     if (operadorMatematico == 1 && dadosConfigurados.operacoesDeDivisao) {
       gerarFatoresOperacaoMatematica();
       preencherFatorTela(operadorMatematico);
-      resultadoOperacao = fator / multiplicador;
       opcaoValida = true;
     } else if (
       operadorMatematico == 2 &&
@@ -31,12 +27,10 @@ function geradorGameMatematica() {
     ) {
       gerarFatoresOperacaoMatematica();
       preencherFatorTela(operadorMatematico);
-      resultadoOperacao = fator * multiplicador;
       opcaoValida = true;
     } else if (operadorMatematico == 3 && dadosConfigurados.operacoesDeAdicao) {
       gerarFatoresOperacaoMatematica();
       preencherFatorTela(operadorMatematico);
-      resultadoOperacao = fator + multiplicador;
       opcaoValida = true;
     } else if (
       operadorMatematico == 4 &&
@@ -44,7 +38,6 @@ function geradorGameMatematica() {
     ) {
       gerarFatoresOperacaoMatematica();
       preencherFatorTela(operadorMatematico);
-      resultadoOperacao = fator - multiplicador;
       opcaoValida = true;
     }
   }
@@ -54,7 +47,7 @@ function geradorGameMatematica() {
 function preencherFatorTela(operador) {
   switch (operador) {
     case 1:
-      operador = "/";
+      operador = "÷";
       break;
     case 2:
       operador = "X";
@@ -68,10 +61,11 @@ function preencherFatorTela(operador) {
   }
   inputOperador.setAttribute("value", operador);
 }
-
 function gerarFatoresOperacaoMatematica() {
-  if (operadorMatematico === 1) {
-    while (fatorOld == fator) {
+  let fator, multiplicador;
+
+  do {
+    if (operadorMatematico === 1) {
       fator = getRandomInt(
         configuracoes.limiteNegativoFatorA,
         configuracoes.limiteFatorA
@@ -80,7 +74,6 @@ function gerarFatoresOperacaoMatematica() {
         configuracoes.limiteNegativoFatorB,
         configuracoes.limiteFatorB
       );
-      // valida se o fator é igual a 0
       if (fator == 0) {
         fator = 1;
       }
@@ -97,9 +90,7 @@ function gerarFatoresOperacaoMatematica() {
           configuracoes.limiteFatorB
         );
       }
-    }
-  } else {
-    while (fatorOld == fator) {
+    } else {
       fator = getRandomInt(
         configuracoes.limiteNegativoFatorA,
         configuracoes.limiteFatorA
@@ -109,22 +100,64 @@ function gerarFatoresOperacaoMatematica() {
         configuracoes.limiteFatorB
       );
     }
-  }
+  } while (operacaoRepetida(fator, multiplicador, operadorMatematico));
+
+  historicoOperacoes.push({
+    fator: fator,
+    multiplicador: multiplicador,
+    operador: operadorMatematico,
+  });
+
   inputFator1.setAttribute("value", fator);
   inputFator2.setAttribute("value", multiplicador);
-  fatorOld = fator;
 }
+
+function operacaoRepetida(fator, multiplicador, operador) {
+  return historicoOperacoes.some(
+    (op) =>
+      op.fator === fator &&
+      op.multiplicador === multiplicador &&
+      op.operador === operador
+  );
+}
+
+const getResultadoOperacao = () => {
+  let resultado = 0;
+
+  switch (operadorMatematico) {
+    case 1:
+      resultado =
+        Number.parseInt(inputFator1.value) / Number.parseInt(inputFator2.value);
+      break;
+    case 2:
+      resultado =
+        Number.parseInt(inputFator1.value) * Number.parseInt(inputFator2.value);
+      break;
+    case 3:
+      resultado =
+        Number.parseInt(inputFator1.value) + Number.parseInt(inputFator2.value);
+      break;
+    case 4:
+      resultado =
+        Number.parseInt(inputFator1.value) - Number.parseInt(inputFator2.value);
+      break;
+  }
+
+  return resultado;
+};
 
 function validaResultado() {
   let resultadoUsuario = inputResultado.value;
+  let resultadoOperacao = getResultadoOperacao();
+
+  alert(resultadoOperacao);
   if (resultadoOperacao == resultadoUsuario) {
     adicionaQtdAcertos();
     geradorGameMatematica();
   } else {
     adicionaQtdErros();
-    console.log(configuracoesExibicao.exibirRespostaCerta)
     if (configuracoesExibicao.exibirRespostaCerta) {
-      window.alert("Resposta correa: " + resultadoOperacao);
+      window.alert("Resposta correta: " + resultadoOperacao);
     }
     geradorGameMatematica();
   }
