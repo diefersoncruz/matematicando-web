@@ -31,7 +31,7 @@ function iniciarJogo() {
     inputResultado.disabled = false;
 
     // Atualiza o botão para "Parar Jogo"
-    btnIniciarPararJogo.textContent = "Parar Jogo";
+    btnIniciarPararJogo.value = "Parar Jogo";
     btnIniciarPararJogo.classList.remove("btnIniciarJogo");
     btnIniciarPararJogo.classList.add("btnPararJogo");
   }
@@ -53,7 +53,7 @@ function pararJogo(confirmarAntesParar = false) {
     minutoElement.innerHTML = "00";
 
     // Atualiza o botão para "Iniciar Jogo"
-    btnIniciarPararJogo.textContent = "Iniciar Jogo";
+    btnIniciarPararJogo.value = "Iniciar Jogo";
     btnIniciarPararJogo.classList.add("btnIniciarJogo");
     btnIniciarPararJogo.classList.remove("btnPararJogo");
   }

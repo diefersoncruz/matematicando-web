@@ -1,183 +1,221 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
-
+/* CSS Reset - Essencial para um design multiplataforma */
 * {
-  font-family: "Open Sans", sans-serif;
-}
-
-
-body {
-  margin: 0;
-  /* Eliminates default margin on body */
-  height: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-header {
-  /* Use Flexbox for better alignment and responsiveness */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Add some padding to the top and bottom */
-  background-color: #f0f0f0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Use min-height instead of height to prevent content from overflowing */
-  min-height: 10vh;
-  width: 100%;
-  max-width: 100%;
-}
-
-main {
+body {
+  font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 100%;
-  min-height: 75vh;
-  max-height: 85vh;
-  border: 4px solid #333;
-  box-sizing: border-box;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  background-color: antiquewhite;
+  min-height: 100vh; /* Garante que o body ocupe a altura total da viewport */
 }
 
-.footer {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 100%;
-  min-height: 10vh;
-  /* Center the text both vertically and horizontally in the footer */
+/* Cabeçalho */
+.header {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Painel Principal */
+.painel {
+  flex-grow: 1; /* Ocupa o espaço disponível restante na tela */
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  font-size: 1.5dvw;
+  background-color: antiquewhite;
+  border: 4px solid #333;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  min-height: 70vh; /* Define a altura mínima como 70% da altura da viewport */
 }
 
-.opcoes {
-  margin-top: 1vh;
+/* Container para centralizar o conteúdo */
+.container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 600px;
 }
 
-#divAcertos {
-  flex-basis: 20%;
-  /* added border to the divErros element */
-  border: 1px solid #ccc;
+/* Opções do Jogo */
+.opcoes {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.score-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.score-box--green {
   background-color: rgb(81, 189, 81);
   color: white;
-  font-size: 3lvw;
 }
 
-#divErros {
-  flex-basis: 20%;
-  /* added border to the divErros element */
-  border: 1px solid #ccc;
+.score-box--red {
   background-color: rgb(189, 79, 79);
   color: white;
-  font-size: 3lvw;
 }
 
-#divCronometro {
-  flex-basis: 50%;
-  /* added border to the divErros element */
-  border: 1px solid #ccc;
-  /* added some padding for better readability */
+.cronometro {
+  font-size: 2rem;
   padding: 1rem;
-}
-
-.inputsAcertosErros {
-  font-size: 3vw;
-  background-color: transparent;
-  border-style: none;
-  color: white;
-}
-
-#labelCronometro {
-  font-size: 5vw;
-  font-style: oblique;
-  text-align: center;
-  background-color: rgb(51, 51, 199);
-  color: white;
-}
-
-.divFatores {
-  margin-top: 10vh;
-  display: flex;
-  justify-content: space-between;
-}
-
-#inputOperador {
-  flex-basis: 20%;
-  background-color: transparent;
-  border: none;
-}
-
-.inputFatores {
-  flex-basis: 40%;
-}
-
-.inputs {
-  font-size: 6vw;
-  color: blue;
-}
-
-#divResultado {
-  display: flex;
-  justify-content: space-between;
-  min-height: 20vh;
-  align-items: center;
-}
-
-#inputResultado {
-  flex-basis: 50%;
-  height: 10vh;
-  margin-top: 5vh;
-  border-style: double;
-}
-
-.divBotoes {
-  flex-basis: 20%;
-}
-
-.btnIniciarJogo {
-  color: green;
-  min-width: 10vh;
-  min-height: 10vh;
-  margin-top: 5vh;
-  margin-left: 1vh;
-}
-
-.btnPararJogo {
-  color: rgb(184, 51, 51);
-  min-width: 10vh;
-  min-height: 10vh;
-  margin-top: 5vh;
-  margin-left: 1vh;
-}
-
-#btnConfiguracoes {
-  min-width: 5vh;
-  max-width: 5vh;
-  max-height: 5vh;
-  min-height: 5vh;
-  background-image: url("../imagens/engrenagem.ico");
-  background-size: 5vh;
-  margin-right: 1vh;
-  margin-top: 5vh;
-}
-
-#btn-responder {
-  background-color: rgb(51, 51, 199);
-  color: white;
-  padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-size: 2vw;
-  text-align: center;
 }
 
-#btn-responder:hover {
-  background-color: darkblue;
+/* Expressão Matemática */
+.expressao {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.input-fator,
+.input-resultado {
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 0.5rem;
+  border: 2px solid #333;
+}
+
+.operador,
+.igual {
+  font-size: 2rem;
+}
+
+/* Botões */
+.botoes {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-config {
+  background: none;
+  padding: 0.5rem;
+}
+
+.btn-config img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.btn-responder {
+  background-color: #2196f3;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Modal de Configurações */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 500px;
+  border-radius: 5px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.modal-body {
+  font-size: 1.2rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input[type="number"],
+.form-group input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.btn-salvar {
+  background-color: #4caf50;
+  margin-left: 1rem;
+}
+
+.btn-fechar {
+  background-color: #f44336;
+}
+
+/* Rodapé */
+.footer {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer a {
+  color: #333;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.footer p {
+  margin: 0;
 }

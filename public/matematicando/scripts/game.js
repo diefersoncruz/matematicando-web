@@ -113,12 +113,12 @@ function operacaoRepetida(fator, multiplicador, operador) {
 }
 
 function validarResultado() {
+  alert(operadorMatematicoAtual);
   const resultadoUsuario = parseFloat(inputResultado.value);
   const resultadoCorreto = operacoes[operadorMatematicoAtual].funcao(
     parseFloat(inputFator1.value),
     parseFloat(inputFator2.value)
   );
-
   if (resultadoCorreto === resultadoUsuario) {
     adicionarAcerto();
     gerarOperacao();
@@ -132,16 +132,16 @@ function validarResultado() {
 }
 
 function adicionarErro() {
-  inputErros.value = parseInt(inputErros.value) + 1;
+  inputErros.textContent = parseInt(inputErros.textContent) + 1;
 }
 
 function adicionarAcerto() {
-  inputAcertos.value = parseInt(inputAcertos.value) + 1;
+  inputAcertos.textContent = parseInt(inputAcertos.textContent) + 1;
 }
 
 function zerarPontuacao() {
-  inputAcertos.value = 0;
-  inputErros.value = 0;
+  inputAcertos.textContent = 0;
+  inputErros.textContent = 0;
 }
 
 export { gerarOperacao, validarResultado, zerarPontuacao };
