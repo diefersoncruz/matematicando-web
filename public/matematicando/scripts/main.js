@@ -1,5 +1,6 @@
 import { iniciarJogo, jogoEmAndamento, pararJogo } from "./controler.js";
 import { validarResultado } from "./game.js";
+import Salas from "../dados/salas.js";
 
 const btnIniciarPararJogo = document.getElementById("btnIniciarPararJogo");
 const btnResponder = document.getElementById("btn-responder");
