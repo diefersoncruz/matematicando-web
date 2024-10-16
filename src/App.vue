@@ -1,85 +1,124 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div>
+    <header class="header">
+      <h1>Matematicando</h1>
+    </header>
+    <main class="painel">
+      <div class="container">
+        <div class="opcoes">
+          <div id="divAcertos" class="score-box score-box--green">
+            <label for="inputAcertos" class="score-label">Acertos:</label>
+            <span id="inputAcertos" class="score-value">{{ acertos }}</span>
+          </div>
+          <div id="divCronometro" class="cronometro">
+            <span id="minuto">{{ tempoFormatado }}</span> 
+          </div>
+          <div id="divErros" class="score-box score-box--red">
+            <label for="inputErros" class="score-label">Erros:</label>
+            <span id="inputErros" class="score-value">{{ erros }}</span>
+          </div>
+        </div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+        <div class="expressao">
+          <input
+            type="number"
+            id="inputFator1"
+            class="input-fator"
+            :value="fator1"
+            readonly
+            disabled
+          />
+          <span id="inputOperador" class="operador">{{ operador }}</span>
+          <input
+            type="number"
+            id="inputFator2"
+            class="input-fator"
+            :value="fator2"
+            readonly
+            disabled
+          />
+          <span class="igual">=</span>
+          <input
+            type="number"
+            id="inputResultado"
+            class="input-resultado"
+            ref="inputResultado" 
+            v-model="respostaUsuario"
+            @keyup.enter="verificarRespostaOuIniciar" 
+            :disabled="!jogoEmAndamento"
+          />
+        </div>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+        <div class="botoes">
+          <button 
+            id="btnIniciarPararJogo" 
+            class="btn btn-iniciar" 
+            @click="iniciarOuPararJogo"
+          >
+            {{ jogoEmAndamento ? 'Parar Jogo' : 'Iniciar Jogo' }}
+          </button>
+          <button 
+            id="btn-responder" 
+            class="btn btn-responder" 
+            @click="verificarResposta" 
+            :disabled="!jogoEmAndamento"
+          >
+            Responder
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      </footer>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script>
+import { iniciarJogo, pararJogo } from "./services/controler.js";
+import { gerarOperacao, validarResultado, zerarPontuacao } from "./services/game.js";
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
+export default {
+  data() {
+    return {
+      acertos: 0,
+      erros: 0,
+      fator1: 0,
+      fator2: 0,
+      operador: '+',
+      respostaUsuario: null,
+      jogoEmAndamento: false,
+      tempoFormatado: "00:00", 
+    };
+  },
+  methods: {
+    iniciarOuPararJogo() {
+      if (this.jogoEmAndamento) {
+        pararJogo(true, this.atualizarDados);
+      } else {
+        iniciarJogo(this.atualizarDados);
+      }
+    },
+    verificarResposta() {
+      if (this.jogoEmAndamento) {
+        validarResultado(this.respostaUsuario, this.atualizarDados);
+      }
+    },
+    verificarRespostaOuIniciar() {
+      if (this.jogoEmAndamento) {
+        this.verificarResposta();
+      } else {
+        this.iniciarOuPararJogo(); 
+      }
+      this.$nextTick(() => { 
+        this.$refs.inputResultado.focus();
+      });
+    },
+    atualizarDados(campo, valor) {
+      this[campo] = valor;
+    }
+  },
+  mounted() { 
+    gerarOperacao(this.atualizarDados); 
+  },
+};
+</script>
