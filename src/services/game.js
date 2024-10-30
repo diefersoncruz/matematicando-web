@@ -38,15 +38,15 @@ function gerarOperacao(atualizarDados) {
   }
 
   let operadorValido = false;
-  let fator1, fator2; 
+  let fator1, fator2;
 
   do {
     operadorMatematicoAtual = parseInt(
       operacoesHabilitadas[getRandomInt(0, operacoesHabilitadas.length - 1)]
     );
 
-    [fator1, fator2] = gerarFatores(operadorMatematicoAtual); 
-    operadorValido = !operacaoRepetida(fator1, fator2, operadorMatematicoAtual); 
+    [fator1, fator2] = gerarFatores(operadorMatematicoAtual);
+    operadorValido = !operacaoRepetida(fator1, fator2, operadorMatematicoAtual);
   } while (!operadorValido);
 
   historicoOperacoes.push({
@@ -55,10 +55,10 @@ function gerarOperacao(atualizarDados) {
     operador: operadorMatematicoAtual,
   });
 
-  atualizarDados('fator1', fator1);
-  atualizarDados('fator2', fator2);
-  atualizarDados('operador', operacoes[operadorMatematicoAtual].simbolo);
-  atualizarDados('respostaUsuario', ''); 
+  atualizarDados("fator1", fator1);
+  atualizarDados("fator2", fator2);
+  atualizarDados("operador", operacoes[operadorMatematicoAtual].simbolo);
+  atualizarDados("respostaUsuario", "");
 }
 
 function gerarFatores(operador) {
@@ -73,7 +73,7 @@ function gerarFatores(operador) {
       configuracoes.limiteFatorB
     );
 
-    if (operador === 1 && fator2 !== 0) { 
+    if (operador === 1 && fator2 !== 0) {
       fator1 =
         fator2 *
         Math.round(
@@ -83,28 +83,24 @@ function gerarFatores(operador) {
           )
         );
     }
-  } while (fator1 === 0 || fator2 === 0); 
+  } while (fator1 === 0 || fator2 === 0);
 
   return [fator1, fator2];
 }
 
-
 function operacaoRepetida(fator1, fator2, operador) {
   return historicoOperacoes.some(
     (op) =>
-      op.fator1 === fator1 &&
-      op.fator2 === fator2 &&
-      op.operador === operador
+      op.fator1 === fator1 && op.fator2 === fator2 && op.operador === operador
   );
 }
 
-function validarResultado(respostaUsuario, atualizarDados) {
+function validarResultado(atualizarDados) {
   const resultadoCorreto = operacoes[operadorMatematicoAtual].funcao(
-    parseFloat(atualizarDados('fator1')),
-    parseFloat(atualizarDados('fator2')) 
+    parseFloat(atualizarDados("fator1")),
+    parseFloat(atualizarDados("fator2"))
   );
-
-  if (resultadoCorreto === parseFloat(respostaUsuario)) {
+  if (resultadoCorreto === parseFloat(atualizarDados("respostaUsuario"))) {
     adicionarAcerto(atualizarDados);
     gerarOperacao(atualizarDados);
   } else {
@@ -112,21 +108,21 @@ function validarResultado(respostaUsuario, atualizarDados) {
     if (configuracoes.exibicao.exibirRespostaCerta) {
       alert(`Resposta correta: ${resultadoCorreto}`);
     }
-    gerarOperacao(atualizarDados); 
+    gerarOperacao(atualizarDados);
   }
 }
 
 function adicionarErro(atualizarDados) {
-  atualizarDados('erros', parseInt(atualizarDados('erros')) + 1); 
+  atualizarDados("erros", parseInt(atualizarDados("erros")) + 1);
 }
 
 function adicionarAcerto(atualizarDados) {
-  atualizarDados('acertos', parseInt(atualizarDados('acertos')) + 1); 
+  atualizarDados("acertos", parseInt(atualizarDados("acertos")) + 1);
 }
 
 function zerarPontuacao(atualizarDados) {
-  atualizarDados('acertos', 0);
-  atualizarDados('erros', 0);
+  atualizarDados("acertos", 0);
+  atualizarDados("erros", 0);
 }
 
 export { gerarOperacao, validarResultado, zerarPontuacao };

@@ -11,7 +11,7 @@
             <span id="inputAcertos" class="score-value">{{ acertos }}</span>
           </div>
           <div id="divCronometro" class="cronometro">
-            <span id="minuto">{{ tempoFormatado }}</span> 
+            <span id="minuto">{{ tempoFormatado }}</span>
           </div>
           <div id="divErros" class="score-box score-box--red">
             <label for="inputErros" class="score-label">Erros:</label>
@@ -42,25 +42,25 @@
             type="number"
             id="inputResultado"
             class="input-resultado"
-            ref="inputResultado" 
+            ref="inputResultado"
             v-model="respostaUsuario"
-            @keyup.enter="verificarRespostaOuIniciar" 
+            @keyup.enter="verificarRespostaOuIniciar"
             :disabled="!jogoEmAndamento"
           />
         </div>
 
         <div class="botoes">
-          <button 
-            id="btnIniciarPararJogo" 
-            class="btn btn-iniciar" 
+          <button
+            id="btnIniciarPararJogo"
+            class="btn btn-iniciar"
             @click="iniciarOuPararJogo"
           >
-            {{ jogoEmAndamento ? 'Parar Jogo' : 'Iniciar Jogo' }}
+            {{ jogoEmAndamento ? "Parar Jogo" : "Iniciar Jogo" }}
           </button>
-          <button 
-            id="btn-responder" 
-            class="btn btn-responder" 
-            @click="verificarResposta" 
+          <button
+            id="btn-responder"
+            class="btn btn-responder"
+            @click="verificarResposta"
             :disabled="!jogoEmAndamento"
           >
             Responder
@@ -68,14 +68,13 @@
         </div>
       </div>
     </main>
-    <footer class="footer">
-      </footer>
+    <footer class="footer"></footer>
   </div>
 </template>
 
 <script>
 import { iniciarJogo, pararJogo } from "./services/controler.js";
-import { gerarOperacao, validarResultado, zerarPontuacao } from "./services/game.js";
+import { gerarOperacao, validarResultado } from "./services/game.js";
 
 export default {
   data() {
@@ -84,41 +83,53 @@ export default {
       erros: 0,
       fator1: 0,
       fator2: 0,
-      operador: '+',
-      respostaUsuario: null,
+      operador: "+",
+      respostaUsuario: 0,
       jogoEmAndamento: false,
-      tempoFormatado: "00:00", 
+      tempoFormatado: "00:00",
+      intervaloCronometro: null,
+      tempoSegundos: 0,
     };
   },
   methods: {
     iniciarOuPararJogo() {
       if (this.jogoEmAndamento) {
         pararJogo(true, this.atualizarDados);
+        clearInterval(this.intervaloCronometro);
+        this.intervaloCronometro = null;
       } else {
         iniciarJogo(this.atualizarDados);
+        this.tempoSegundos = 0;
+        this.intervaloCronometro = setInterval(() => {
+          this.tempoSegundos++;
+        }, 1000);
       }
     },
+
     verificarResposta() {
       if (this.jogoEmAndamento) {
-        validarResultado(this.respostaUsuario, this.atualizarDados);
+        validarResultado(this.atualizarDados);
       }
     },
     verificarRespostaOuIniciar() {
       if (this.jogoEmAndamento) {
         this.verificarResposta();
       } else {
-        this.iniciarOuPararJogo(); 
+        this.iniciarOuPararJogo();
       }
-      this.$nextTick(() => { 
+      this.$nextTick(() => {
         this.$refs.inputResultado.focus();
       });
     },
-    atualizarDados(campo, valor) {
-      this[campo] = valor;
-    }
+    atualizarDados(campo, valor = null) {
+      if (valor !== null) {
+        this[campo] = valor;
+      }
+      return this[campo];
+    },
   },
-  mounted() { 
-    gerarOperacao(this.atualizarDados); 
+  mounted() {
+    gerarOperacao(this.atualizarDados);
   },
 };
 </script>
