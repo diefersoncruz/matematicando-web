@@ -44,7 +44,7 @@
             class="input-resultado"
             ref="inputResultado"
             v-model="respostaUsuario"
-            @keyup.enter="verificarRespostaOuIniciar"
+            @keyup.enter="verificarResposta"
             :disabled="!jogoEmAndamento"
           />
         </div>
@@ -92,6 +92,12 @@ export default {
     };
   },
   methods: {
+    handleDocumentKeydown(event) {
+      if (event.key === "Enter" && event.target === document.body) {
+        this.verificarResposta();
+        event.preventDefault(); // Prevent default Enter behavior (like form submission)
+      }
+    },
     iniciarOuPararJogo() {
       if (this.jogoEmAndamento) {
         pararJogo(true, this.atualizarDados);
@@ -109,18 +115,12 @@ export default {
     verificarResposta() {
       if (this.jogoEmAndamento) {
         validarResultado(this.atualizarDados);
+        this.$nextTick(() => {
+          this.$refs.inputResultado.focus(); // Redefine o foco no input após a validação
+        });
       }
     },
-    verificarRespostaOuIniciar() {
-      if (this.jogoEmAndamento) {
-        this.verificarResposta();
-      } else {
-        this.iniciarOuPararJogo();
-      }
-      this.$nextTick(() => {
-        this.$refs.inputResultado.focus();
-      });
-    },
+
     atualizarDados(campo, valor = null) {
       if (valor !== null) {
         this[campo] = valor;
@@ -130,6 +130,12 @@ export default {
   },
   mounted() {
     gerarOperacao(this.atualizarDados);
+    // Attach the event listener
+    document.addEventListener("keydown", this.handleDocumentKeydown);
+  },
+  beforeUnmount() {
+    // Remove the event listener to prevent memory leaks
+    document.removeEventListener("keydown", this.handleDocumentKeydown);
   },
 };
 </script>

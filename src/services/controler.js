@@ -31,6 +31,7 @@ function pararJogo(confirmarAntesParar = false, atualizarDados) {
     atualizarDados("jogoEmAndamento", false);
     clearInterval(intervalo);
     atualizarDados("intervaloCronometro", null);
+    atualizarDados("tempoFormatado", "00:00");
   }
 }
 
