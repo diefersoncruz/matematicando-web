@@ -21,5 +21,5 @@
   </div>
 </template>
 
-<script src="@/components/SalaForm.js"></script>
+<script src="@/data/SalaForm.js"></script>
 <style scoped src="@/assets/css/SalaForm.css"></style>

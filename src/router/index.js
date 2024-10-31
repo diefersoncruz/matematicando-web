@@ -1,7 +1,6 @@
 // router/index.js
 import { createRouter, createWebHistory } from "vue-router";
-import SalaForm from "@/components/SalaForm.vue";
-import HomeView from "@/views/HomeView.vue";
+import SalaForm from "@/views/SalaForm.vue";
 import GameView from "@/views/GameView.vue";
 
 const router = createRouter({
@@ -10,16 +9,11 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: HomeView, // Adicione o componente aqui
-    },
-    {
-      path: "/game",
-      name: "GameView",
       component: GameView,
     },
     {
-      path: "/criar-sala",
-      name: "CriarSala",
+      path: "/salas",
+      name: "salas",
       component: SalaForm,
     },
   ],
