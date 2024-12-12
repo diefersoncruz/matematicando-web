@@ -26,6 +26,8 @@ jobs:
     needs: build_push
     env:
       CONTAINER_NAME: matematicando-web
+      SERVER_PORT: 5481
+      APP_PORT: 5481
     steps:
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.2.0
@@ -53,5 +55,5 @@ jobs:
             docker pull ghcr.io/${{ github.repository }}:${{ github.sha }} || exit 1
 
             # Run the container, passing secrets directly via -e and mounting the config directory
-            docker run -d --restart=unless-stopped -p 4000:4000 --name ${{ env.CONTAINER_NAME }} \
+            docker run -d --restart=unless-stopped -p ${{ env.APP_PORT }}:${{ env.SERVER_PORT }} --name ${{ env.CONTAINER_NAME }} \
               ghcr.io/${{ github.repository }}:${{ github.sha }}
