@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Define a porta que a aplicação vai usar
-EXPOSE 8000
+EXPOSE 5481
 
 # Comando para iniciar o servidor
-CMD ["npx", "serve", "-s", "dist"]
+CMD ["npx", "serve", "-s", "dist", "-l", "5481"]
